@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ehsan Naghdbishi | Chemical &amp; Environmental Process Engineer</title>
-  <meta name="description" content="Chemical Engineer specializing in process simulation, biosorbent materials, and environmental process engineering for water and wastewater treatment.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.15/dist/lenis.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ehsan Naghdbishi | Chemical Biotechnology Researcher</title>
+  <meta name="description" content="Chemical Biotechnology researcher specializing in bioprocess engineering, environmental biotechnology, and circular bioeconomy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.15/dist/lenis.css" />
 
   <style>
     /* ===== RESET ===== */
@@ -151,8 +151,6 @@
       border-top-color: rgba(255, 255, 255, 0.18);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
-
-
 
     .nav-logo {
       display: flex;
@@ -399,10 +397,6 @@
       .proj-card { padding: 1.75rem 1.25rem; }
       .proj-card h3 { font-size: 1.05rem; }
       .proj-card p { font-size: 0.82rem; }
-
-      .pub-card { padding: 1.5rem; border-radius: var(--radius-sm); }
-      .pub-card h3 { font-size: 1rem; }
-      .pub-card p { font-size: 0.85rem; }
 
       .certs-grid { grid-template-columns: 1fr; }
       .cert-card { padding: 1.25rem; }
@@ -1098,21 +1092,58 @@
       padding: 7rem 0;
     }
 
+    .pub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
     .pub-card {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2.5rem;
-      border: 1px solid var(--border);
+      position: relative;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius);
+      background: var(--bg-soft);
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transform: scaleX(0);
+      transition: transform 0.45s ease;
+      transform-origin: center;
+    }
+
+    .pub-card:hover::before { transform: scaleX(1); }
+
+    .pub-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.24);
       background: var(--bg-card);
     }
 
     .pub-card h3 {
-      font-size: 1.15rem;
-      font-weight: 500;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 550;
+      line-height: 1.45;
+      margin-bottom: 0.65rem;
       letter-spacing: -0.01em;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+      word-break: normal;
+      hyphens: auto;
+      min-width: 0;
     }
 
     .pub-card .pub-org {
@@ -1120,51 +1151,39 @@
       color: var(--text-soft);
       font-weight: 400;
       margin-bottom: 1rem;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+      min-width: 0;
+    }
+
+    .pub-card .pub-org a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     .pub-card p {
       font-size: 0.88rem;
-      line-height: 1.75;
+      line-height: 1.72;
       color: var(--text-soft);
       font-weight: 400;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
+      overflow-wrap: anywhere;
+      min-width: 0;
+      flex: 1;
     }
 
-    /* ===== CERTIFICATIONS ===== */
-    .certs {
-      padding: 7rem 0;
-      background: var(--bg);
+    @media (max-width: 1024px) {
+      .pub-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     }
 
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-
-    .cert-card {
-      background: var(--bg);
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .cert-card:hover {
-      background: var(--bg-soft);
-    }
-
-    .cert-card h3 {
-      font-size: 0.88rem;
-      font-weight: 550;
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.02em;
-    }
-
-    .cert-card p {
-      font-size: 0.78rem;
-      line-height: 1.65;
-      color: var(--text-muted);
-      font-weight: 400;
+    @media (max-width: 768px) {
+      .pubs { padding: 5rem 0; }
+      .pub-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .pub-card { padding: 1.35rem; border-radius: var(--radius-sm); }
+      .pub-card h3 { font-size: 0.98rem; line-height: 1.42; }
+      .pub-card .pub-org { font-size: 0.78rem; }
+      .pub-card p { font-size: 0.82rem; line-height: 1.68; }
     }
 
     /* ===== LANGUAGES ===== */
@@ -1510,50 +1529,6 @@
       color: var(--text);
     }
 
-    .lang-switch {
-      display: flex;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: var(--radius-sm);
-      padding: 2px;
-      border: 1px solid var(--border);
-    }
-
-    .lang-switch button {
-      padding: 0.25rem 0.65rem;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      font-weight: 500;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-
-    .lang-switch button:active {
-      transform: scale(0.95);
-      transition: transform 80ms ease-out;
-    }
-
-    .lang-switch button.active {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
-    }
-
-    .modal-body {
-      flex: 1;
-      padding: 0.5rem;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 0 0 var(--radius) var(--radius);
-    }
-
-    .modal-body iframe {
-      width: 100%;
-      height: 70vh;
-      border: 0;
-      border-radius: var(--radius-sm);
-    }
-
     .dl-btn {
       display: inline-flex;
       align-items: center;
@@ -1577,6 +1552,20 @@
     .dl-btn:hover {
       border-color: var(--border-hover);
       color: var(--text);
+    }
+
+    .modal-body {
+      flex: 1;
+      padding: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 70vh;
+      border: 0;
+      border-radius: var(--radius-sm);
     }
 
     /* ===== REVEAL ===== */
@@ -1654,6 +1643,72 @@
         border-color: rgba(255, 255, 255, 0.35) !important;
       }
     }
+
+    @media (max-width: 900px) {
+      .proj-grid,
+      .certs-grid,
+      .c-grid,
+      .values-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        background: transparent !important;
+      }
+
+      .proj-card,
+      .cert-card,
+      .value-card,
+      .c-card {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        background: var(--bg-soft);
+        min-width: 0;
+      }
+
+      .proj-card h3,
+      .cert-card h3,
+      .value-card h3,
+      .c-card h4,
+      .proj-card p,
+      .cert-card p,
+      .value-card p,
+      .c-desc,
+      .tl-desc,
+      .tl-card h3 {
+        overflow-wrap: anywhere;
+        word-break: normal;
+        hyphens: auto;
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h2.sec-title { font-size: clamp(1.7rem, 8vw, 2.2rem); line-height: 1.18; margin-bottom: 2rem; }
+      .tag { font-size: 0.7rem; letter-spacing: 0.12em; }
+      .proj-grid,
+      .certs-grid,
+      .skills-grid,
+      .c-grid,
+      .values-grid { grid-template-columns: 1fr !important; }
+      .proj-card,
+      .cert-card,
+      .skill-item,
+      .value-card,
+      .c-card { padding: 1.35rem !important; }
+      .proj-card h3,
+      .skill-item h3,
+      .cert-card h3,
+      .value-card h3,
+      .pub-card h3 { font-size: 1rem !important; line-height: 1.42 !important; }
+      .proj-card p,
+      .skill-item p,
+      .cert-card p,
+      .value-card p,
+      .pub-card p,
+      .c-desc { font-size: 0.84rem !important; line-height: 1.7 !important; }
+      .proj-tags { gap: 0.45rem; }
+      .proj-tags span { font-size: 0.72rem; padding: 0.38rem 0.6rem; }
+      .nav { left: 0.75rem; right: 0.75rem; }
+    }
   </style>
 </head>
 <body oncontextmenu="return false;">
@@ -1705,14 +1760,14 @@
     <div class="hero-grid"></div>
 
     <div class="hero-content">
-      <div class="hero-label" id="heroLabel">Chemical Process Engineer</div>
+      <div class="hero-label" id="heroLabel">Chemical Biotechnology Researcher</div>
       <h1 id="heroTitle">
         <span class="block">Ehsan</span>
         <span class="block light">Naghdbishi</span>
       </h1>
       <p id="heroP">
-        Engineering <strong>bio-based materials</strong> and <strong>process solutions</strong>
-        for water, wastewater, and environmental treatment systems.
+        Bridging <strong>Environmental Biotechnology</strong>, <strong>Bioprocess Engineering</strong>,
+        and <strong>Circular Bioeconomy</strong> to transform waste streams into high-value resources.
       </p>
       <a href="#contact" class="hero-btn" id="heroBtn">
         Get in touch
@@ -1731,30 +1786,67 @@
   <!-- MANIFESTO -->
   <section class="manifesto" id="about">
     <div class="manifesto-text r">
-      We are <strong>strategic innovators</strong>. We combine
-      <strong>Artificial Intelligence</strong>, <strong>engineering precision</strong>,
-      and <strong>digital transformation</strong> to architect intelligent systems
-      and generate <strong>sustainable growth</strong>.
+      We are <strong>sustainability-driven innovators</strong>. We combine
+      <strong>Environmental Biotechnology</strong>, <strong>Bioprocess Engineering</strong>,
+      and <strong>Circular Bioeconomy</strong> to design zero-waste valorization pathways
+      and advance <strong>resource recovery</strong> from industrial waste streams.
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- VALUES -->
+  <section class="values section">
+    <div class="wrapper">
+      <div class="tag r">Posture</div>
+      <h2 class="sec-title r">
+        The <strong>bioprocess and environmental R&amp;D</strong> arm of your organization,
+        grounded in scientific rigor and industrial relevance.
+      </h2>
+
+      <div class="values-grid">
+        <div class="value-card r">
+          <div class="value-num">01</div>
+          <h3>Circular Bioeconomy &amp; Resource Recovery</h3>
+          <p>Design closed-loop bioprocesses that convert industrial and agricultural waste streams into high-value materials, eliminating secondary waste and maximizing resource efficiency.</p>
+        </div>
+
+        <div class="value-card r">
+          <div class="value-num">02</div>
+          <h3>Bioprocess Engineering Excellence</h3>
+          <p>Apply industrial fermentation engineering, bioreactor design, and biosorption kinetics to build scalable, economically viable bioprocesses that perform reliably under real-world conditions.</p>
+        </div>
+
+        <div class="value-card r">
+          <div class="value-num">03</div>
+          <h3>Sustainable Materials Innovation</h3>
+          <p>Develop bio-based adsorbent materials and functional polymers from renewable feedstocks, displacing conventional activated carbon and reducing the environmental footprint of treatment systems.</p>
+        </div>
+
+        <div class="value-card r">
+          <div class="value-num">04</div>
+          <h3>Rigorous Research &amp; Collaboration</h3>
+          <p>Combine statistical experimental design (DOE/RSM), kinetic modeling, and peer-reviewed scientific communication with transparent, cross-disciplinary collaboration to deliver actionable results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MARQUEE 1 -->
   <div class="marquee-wrap">
     <div class="marquee">
-      <div class="marquee-item"><span>Technical Competencies</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Process Design</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Biotechnology</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Materials Science</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Research Methods</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Simulation &amp; Software</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Technical Competencies</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Process Design</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Biotechnology</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Materials Science</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Research Methods</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Simulation &amp; Software</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Environmental Biotechnology</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Bioprocess Engineering</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Circular Bioeconomy</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Resource Recovery</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biosorption &amp; Adsorbents</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Fermentation Engineering</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Environmental Biotechnology</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Bioprocess Engineering</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Circular Bioeconomy</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Resource Recovery</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biosorption &amp; Adsorbents</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Fermentation Engineering</span><div class="marquee-dot"></div></div>
     </div>
   </div>
 
@@ -1767,48 +1859,48 @@
       <div class="skills-grid">
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-drafting-compass"></i></div>
-            <h3>Process Design</h3>
-          </div>
-          <p>Process Analysis &amp; Design, WWTP Process Design, Pollutant Adsorbent Design &amp; Implementation, Bioreactor Engineering &amp; Scale-Up</p>
-        </div>
-
-        <div class="skill-item r">
-          <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-dna"></i></div>
+            <div class="skill-icon"><i class="fas fa-flask"></i></div>
             <h3>Biotechnology</h3>
           </div>
-          <p>Industrial Microbiology, Fermentation Process Design, Biosorption Kinetics &amp; Isotherm Modeling, Environmental Biotechnology</p>
+          <p>Industrial Microbiology, Fermentation Engineering, Biosorption Kinetics &amp; Isotherm Modeling, Bioreactor Engineering &amp; Scale-Up, Environmental Biotechnology</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-flask"></i></div>
-            <h3>Materials Science</h3>
+            <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+            <h3>Process &amp; Materials Design</h3>
           </div>
-          <p>Polymers, Paints &amp; Advanced Resins, Composite Part Design &amp; Implementation, Sustainable &amp; Bio-Based Materials</p>
+          <p>Bioprocess Engineering &amp; Design, Environmental Process Engineering, Water &amp; Wastewater Treatment, Adsorbent Materials Design, Sustainable &amp; Bio-Based Materials</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="skill-icon"><i class="fas fa-recycle"></i></div>
+            <h3>Circular Resource Systems</h3>
+          </div>
+          <p>Circular Bioeconomy, Resource Recovery, Biorefinery Process Development, Industrial Biotechnology, Zero-Waste Valorization</p>
+        </div>
+
+        <div class="skill-item r">
+          <div class="skill-head">
+            <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
             <h3>Research Methods</h3>
           </div>
-          <p>Design of Experiments &amp; Response Surface Methodology (DOE/RSM), Kinetic &amp; Statistical Modeling, Peer-Reviewed Technical Writing</p>
+          <p>Design of Experiments &amp; Response Surface Methodology (DOE/RSM), Kinetic &amp; Statistical Modeling, Peer-Reviewed Scientific Writing, Technical Documentation</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>Simulation &amp; Software</h3>
+            <div class="skill-icon"><i class="fas fa-code"></i></div>
+            <h3>Software &amp; Tools</h3>
           </div>
-          <p>Aspen HYSYS, Pipesim, MATLAB, Design Expert, Python, Microsoft Office, Adobe Photoshop, Adobe Premiere</p>
+          <p>MATLAB (Advanced), Design Expert (Advanced), Python (Intermediate), Aspen HYSYS (Intermediate), Pipesim (Intermediate), Microsoft Office (Advanced)</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
-            <h3>Professional Skills</h3>
+            <div class="skill-icon"><i class="fas fa-microscope"></i></div>
+            <h3>Research Attributes</h3>
           </div>
           <p>Analytical Precision, Laboratory Rigor, Cross-Disciplinary Problem Solving, Independent Research Initiative, Continuous Improvement</p>
         </div>
@@ -1826,10 +1918,10 @@
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>M.Sc. in Chemical Engineering (Biotechnology)</h3>
+            <h3>M.Sc. Chemical Engineering (Biotechnology)</h3>
             <div class="tl-org">Ferdowsi University of Mashhad</div>
             <div class="tl-date">Oct 2022 &mdash; Feb 2025</div>
-            <div class="tl-desc">GPA: 16.6/20</div>
+            <div class="tl-desc">GPA: 16.6/20 — Thesis: Bio-Adsorbent Design for Water Pollutant Removal</div>
           </div>
         </div>
 
@@ -1837,16 +1929,17 @@
           <div class="tl-dot"></div>
           <div class="tl-card">
             <h3>Laboratory Expert</h3>
-            <div class="tl-org">Baspar Payaesh Pars Knowledge-Based Company &mdash; Mashhad, Iran</div>
+            <div class="tl-org">Baspar Payaesh Pars Knowledge-Based Company</div>
             <div class="tl-date">Nov 2021 &mdash; Apr 2022</div>
+            <div class="tl-desc">Material Testing &amp; Validation, Quality Assurance, Technical Documentation</div>
           </div>
         </div>
 
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>B.Sc. in Chemical Engineering</h3>
-            <div class="tl-org">Shahrood University of Technology &mdash; Shahrood, Iran</div>
+            <h3>B.Sc. Chemical Engineering</h3>
+            <div class="tl-org">Shahrood University of Technology</div>
             <div class="tl-date">Oct 2016 &mdash; Sep 2021</div>
             <div class="tl-desc">GPA: 14.49/20</div>
           </div>
@@ -1856,8 +1949,9 @@
           <div class="tl-dot"></div>
           <div class="tl-card">
             <h3>Process Intern</h3>
-            <div class="tl-org">East Oil and Gas Exploitation Company &mdash; Khangiran, Iran</div>
+            <div class="tl-org">East Oil and Gas Exploitation Company — Khangiran</div>
             <div class="tl-date">Jun 2020 &mdash; Sep 2020</div>
+            <div class="tl-desc">Facility Operations Training, Pipeline Flow Simulation (Pipesim)</div>
           </div>
         </div>
       </div>
@@ -1867,12 +1961,12 @@
   <!-- MARQUEE 2 -->
   <div class="marquee-wrap">
     <div class="marquee" style="animation-direction:reverse">
-      <div class="marquee-item"><span>Projects &amp; Research</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Innovation</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Publications</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Projects &amp; Research</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Innovation</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Publications</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Research &amp; Publications</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biosorption</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biorefinery</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Research &amp; Publications</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biosorption</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biorefinery</span><div class="marquee-dot"></div></div>
     </div>
   </div>
 
@@ -1884,55 +1978,35 @@
 
       <div class="proj-grid">
         <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-vial"></i></div>
+          <div class="proj-card-icon"><i class="fas fa-droplet"></i></div>
           <h3>Bio-Adsorbent Design for Water Pollutant Removal</h3>
-          <p>Master's thesis at Ferdowsi University of Mashhad: designed and optimized a novel bio-adsorbent for water pollutant removal via DOE/RSM, delivering a low-cost alternative to activated carbon.</p>
+          <p>Designed and statistically optimized a novel bio-based adsorbent material using DOE/RSM. Validated robust performance across variable pollutant concentration ranges, offering a low-cost alternative to activated carbon.</p>
           <div class="proj-tags">
-            <span>DOE/RSM</span>
             <span>Biosorption</span>
-            <span>Design Expert</span>
+            <span>DOE/RSM</span>
+            <span>Water Quality</span>
           </div>
         </div>
 
         <div class="proj-card r">
           <div class="proj-card-icon"><i class="fas fa-recycle"></i></div>
-          <h3>Zero-Waste Biorefinery Valorization of Coffee Grounds</h3>
-          <p>Engineered a cellulose production process from spent coffee grounds using a series recycle-flow reactor, upcycling effluent into adsorbents for textile wastewater treatment.</p>
+          <h3>Zero-Waste Biorefinery Valorization of Spent Coffee Grounds</h3>
+          <p>Engineered cellulose production from spent coffee grounds using a series recycle-flow bioreactor, with reactor effluent upcycled into functional adsorbents for textile wastewater treatment — a fully closed-loop circular process.</p>
           <div class="proj-tags">
-            <span>Zero-Waste</span>
-            <span>Cellulose</span>
-            <span>Textile WWT</span>
+            <span>Biorefinery</span>
+            <span>Circular Bioeconomy</span>
+            <span>Adsorbents</span>
           </div>
         </div>
 
         <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-bacterium"></i></div>
+          <div class="proj-card-icon"><i class="fas fa-vial"></i></div>
           <h3>Industrial Microbiology &amp; Bioreactor Process Design</h3>
-          <p>Applied fermentation engineering and nanoparticle-enhanced bioprocessing to improve sulfide pollutant removal in activated sludge bioreactors, with kinetic models validated in MATLAB.</p>
+          <p>Applied fermentation engineering and industrial microbiology to wastewater treatment. Built and validated kinetic models in MATLAB characterizing pollutant degradation in activated sludge bioreactors with nanoparticle enhancements.</p>
           <div class="proj-tags">
-            <span>Bioreactors</span>
-            <span>Nanoparticles</span>
+            <span>Fermentation</span>
             <span>Kinetic Modeling</span>
-          </div>
-        </div>
-
-        <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-oil-well"></i></div>
-          <h3>Drilling Fluid Reuse &amp; Wastewater Residue Treatment</h3>
-          <p>Evaluated acidic treatment and reuse of spent drilling fluid on the biological treatability of resulting wastewater residues, presented at a national engineering conference.</p>
-          <div class="proj-tags">
-            <span>Drilling Fluid</span>
-            <span>Wastewater</span>
-          </div>
-        </div>
-
-        <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-cubes"></i></div>
-          <h3>Materials &amp; Composite Systems</h3>
-          <p>Hands-on work with polymers, paints, and advanced resin compounds, alongside design and implementation of composite parts integrating materials science with manufacturing constraints.</p>
-          <div class="proj-tags">
-            <span>Polymers</span>
-            <span>Composites</span>
+            <span>Bioreactors</span>
           </div>
         </div>
       </div>
@@ -1945,45 +2019,50 @@
       <div class="tag r">Research</div>
       <h2 class="sec-title r">Publications</h2>
 
-      <div class="pub-card r">
-        <h3>A Zero-Waste Approach to Spent Coffee Grounds Valorization: Cellulose Production in Series Recycle-Flow Reactors with Its Effluent Upcycling into Adsorbents for Textile Wastewater Treatment</h3>
-        <div class="pub-org">International Journal of Biological Macromolecules (2025)</div>
-        <p>Presents a closed-loop, zero-waste process converting spent coffee grounds into cellulose via series recycle-flow reactors, with reactor effluent upcycled into functional adsorbents for textile wastewater treatment.</p>
-        <div class="proj-tags">
-          <span>Zero-Waste</span>
-          <span>Cellulose</span>
-          <span>Textile WWT</span>
+      <div class="pub-grid">
+        <div class="pub-card r">
+          <h3>A Zero-Waste Approach to Spent Coffee Grounds Valorization: Cellulose Production in Series Recycle-Flow Reactors with Its Effluent Upcycling into Adsorbents for Textile Wastewater Treatment</h3>
+          <div class="pub-org"><em>International Journal of Biological Macromolecules</em> &mdash; <a href="https://doi.org/10.1016/j.ijbiomac.2025.147444" target="_blank">DOI: 10.1016/j.ijbiomac.2025.147444</a> (2025)</div>
+          <p>Presents a closed-loop, zero-waste biorefinery process converting spent coffee grounds into cellulose via series recycle-flow reactors, with reactor effluent upcycled into functional adsorbent materials for textile wastewater treatment.</p>
+          <div class="proj-tags">
+            <span>Zero-Waste</span>
+            <span>Biorefinery</span>
+            <span>Cellulose</span>
+            <span>Adsorbents</span>
+          </div>
         </div>
-      </div>
 
-      <div class="pub-card r">
-        <h3>Kinetic Modeling of Sulfide Pollutant Removal in Activated Sludge Bioreactor with Presence of Silica and Graphene Oxide Nanoparticles</h3>
-        <div class="pub-org">Journal of Water and Wastewater (wwcerd.com) &mdash; Ref: WWJ-2108-3173</div>
-        <p>Developed a biosorption kinetic model characterizing sulfide pollutant degradation within an activated sludge bioreactor, quantifying the catalytic and adsorptive contribution of silica and graphene oxide nanoparticles.</p>
-        <div class="proj-tags">
-          <span>Kinetic Modeling</span>
-          <span>Nanoparticles</span>
-          <span>Bioreactors</span>
+        <div class="pub-card r">
+          <h3>Kinetic Modeling of Sulfide Pollutant Removal in Activated Sludge Bioreactor with Presence of Silica and Graphene Oxide Nanoparticles</h3>
+          <div class="pub-org"><em>Journal of Water and Wastewater</em> &mdash; Ref: WWJ-2108-3173</div>
+          <p>Developed a biosorption kinetic model characterizing microbially mediated sulfide pollutant degradation within an activated sludge bioreactor, quantifying the catalytic and adsorptive contribution of silica and graphene oxide nanoparticles.</p>
+          <div class="proj-tags">
+            <span>Kinetic Modeling</span>
+            <span>Bioreactor</span>
+            <span>Nanoparticles</span>
+          </div>
         </div>
-      </div>
 
-      <div class="pub-card r">
-        <h3>Effect of Acidic Treatment and Reuse of Spent Drilling Fluid on Wastewater Treatment Residues</h3>
-        <div class="pub-org">4th National Conference on Numerical &amp; Experimental Methods in Chemical and Mining Industries (CEC1403) &mdash; Feb 2025</div>
-        <p>Investigated acid-based treatment and reuse strategies for spent drilling fluid to reduce the environmental burden of resulting wastewater treatment residues.</p>
-        <div class="proj-tags">
-          <span>Drilling Fluid</span>
-          <span>Wastewater</span>
+        <div class="pub-card r">
+          <h3>Effect of Acidic Treatment and Reuse of Spent Drilling Fluid on Wastewater Treatment Residues</h3>
+          <div class="pub-org"><em>4th National Conference on Numerical &amp; Experimental Methods in Chemical and Mining Industries</em> &mdash; <a href="https://seminars.usb.ac.ir/cec1403/fa-ir/default.aspx" target="_blank">CEC1403</a> (Feb 2025)</div>
+          <p>Investigated acid-based treatment and reuse strategies for spent drilling fluid to reduce the environmental burden of resulting wastewater treatment residues.</p>
+          <div class="proj-tags">
+            <span>Wastewater</span>
+            <span>Drilling Fluid</span>
+            <span>Environmental</span>
+          </div>
         </div>
-      </div>
 
-      <div class="pub-card r">
-        <h3>Extraction of Plant Cellulose from Coffee Waste</h3>
-        <div class="pub-org">18th National Congress of Chemical Engineering Iran &mdash; Oct 2024</div>
-        <p>Presented an alternative plant-based cellulose extraction methodology derived from coffee waste feedstock.</p>
-        <div class="proj-tags">
-          <span>Cellulose</span>
-          <span>Coffee Waste</span>
+        <div class="pub-card r">
+          <h3>Extraction of Plant Cellulose from Coffee Waste</h3>
+          <div class="pub-org"><em>18th National Congress of Chemical Engineering Iran</em> &mdash; <a href="https://new.vcert.ir/users/preview_cert.php?c=ichec18-02490772&preview" target="_blank">ICheC18</a> (Oct 2024)</div>
+          <p>Presented an alternative plant-based cellulose extraction methodology derived from coffee waste feedstock, supporting circular bioeconomy feedstock diversification.</p>
+          <div class="proj-tags">
+            <span>Cellulose</span>
+            <span>Biomass</span>
+            <span>Extraction</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2013,7 +2092,7 @@
     <div class="wrapper">
       <div class="tag r" style="text-align:center">Get In Touch</div>
       <h2 class="sec-title r" style="text-align:center;max-width:600px;margin-left:auto;margin-right:auto">
-        Open to opportunities in <strong>Environmental Biotechnology</strong>, Sustainable Materials, and Industrial Wastewater Treatment.
+        Open to R&amp;D opportunities in <strong>Environmental Biotechnology</strong>, Bioprocess Engineering, and Sustainable Materials.
       </h2>
 
       <div class="contact-btns r">
@@ -2023,9 +2102,33 @@
 
       <div class="c-grid">
         <div class="c-card r">
-          <div class="c-card-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <h4>Location</h4>
-          <p class="c-desc">Mashhad, Razavi Khorasan Province, Islamic Republic of Iran.</p>
+          <div class="c-card-icon"><i class="fas fa-briefcase"></i></div>
+          <h4>Professional</h4>
+          <p class="c-desc">Research and professional network.</p>
+          <div class="c-links">
+            <a href="#" class="c-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="#" class="c-link"><i class="fab fa-google-scholar"></i> Scholar</a>
+          </div>
+        </div>
+
+        <div class="c-card r">
+          <div class="c-card-icon"><i class="fas fa-share-alt"></i></div>
+          <h4>Connect</h4>
+          <p class="c-desc">Stay in touch via email or social platforms.</p>
+          <div class="c-links">
+            <a href="mailto:ehsan.naghdbishi@gmail.com" class="c-link"><i class="fas fa-envelope"></i> Email</a>
+            <a href="#" class="c-link"><i class="fab fa-twitter"></i> Twitter</a>
+          </div>
+        </div>
+
+        <div class="c-card r">
+          <div class="c-card-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>Research</h4>
+          <p class="c-desc">Publications and research activity.</p>
+          <div class="c-links">
+            <a href="https://doi.org/10.1016/j.ijbiomac.2025.147444" target="_blank" class="c-link"><i class="fas fa-file-alt"></i> Publication</a>
+            <a href="#" class="c-link"><i class="fas fa-book-open"></i> ResearchGate</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2034,7 +2137,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-cta r">
-      <h2>An idea, a project, or simply need to <strong>challenge the status quo</strong>?</h2>
+      <h2>Have a research challenge or a <strong>sustainable innovation</strong> in mind?</h2>
       <a href="#contact" class="footer-btn">
         Let's talk
         <svg viewBox="0 0 8 8"><path d="M4 8L2.8656 6.8656L5.0016 4.7296L0 4.7296L0 3.2704L5.0016 3.2704L2.8656 1.1344L4 0L8 4L4 8Z"/></svg>
@@ -2043,7 +2146,7 @@
 
     <div class="wrapper">
       <div class="footer-bot">
-        <div class="footer-motto">Engineering sustainable solutions for water, wastewater, and environmental treatment.</div>
+        <div class="footer-motto">Chemical Biotechnology researcher · Bioprocess Engineering · Circular Bioeconomy</div>
         <div class="tag r">Ehsan Naghdbishi</div>
       </div>
     </div>
@@ -2117,9 +2220,8 @@
 
       // ===== HERO — DECODE EFFECT =====
       const _C = {
-        'E': 'E3$e', 'h': 'hnb', 's': 'szS5', 'a': 'aeo',
-        'n': 'nmr', 'N': 'NMm', 'g': 'g9q', 'd': 'dbp',
-        'b': 'bpd', 'i': 'ilj1'
+        'E': 'E3e', 'h': 'hnb', 's': 'szS5', 'a': 'aeo', 'n': 'nmN',
+        'N': 'NnM', 'g': 'gqG', 'd': 'dbp', 'b': 'bB6', 'i': 'ilj1'
       };
 
       const _spans = document.querySelectorAll('#heroTitle span');
@@ -2200,6 +2302,8 @@
 
       // ===== RESUME MODAL =====
       const rm = document.getElementById('resumeModal');
+      const ri = document.getElementById('resumeIframe');
+      const db = document.getElementById('dlBtn');
 
       document.getElementById('viewResume').addEventListener('click', () => {
         rm.classList.add('active');
