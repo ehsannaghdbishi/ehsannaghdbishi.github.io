@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soroush Mirzaei | Interdisciplinary Engineer</title>
-  <meta name="description" content="Bridging Advanced AI and Mechanical Engineering to build the next generation of autonomous systems.">
+  <title>Ehsan Naghdbishi | Chemical &amp; Environmental Process Engineer</title>
+  <meta name="description" content="Chemical Engineer specializing in process simulation, biosorbent materials, and environmental process engineering for water and wastewater treatment.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -399,6 +399,10 @@
       .proj-card { padding: 1.75rem 1.25rem; }
       .proj-card h3 { font-size: 1.05rem; }
       .proj-card p { font-size: 0.82rem; }
+
+      .pub-card { padding: 1.5rem; border-radius: var(--radius-sm); }
+      .pub-card h3 { font-size: 1rem; }
+      .pub-card p { font-size: 0.85rem; }
 
       .certs-grid { grid-template-columns: 1fr; }
       .cert-card { padding: 1.25rem; }
@@ -1094,58 +1098,21 @@
       padding: 7rem 0;
     }
 
-    .pub-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-      align-items: stretch;
-    }
-
     .pub-card {
-      position: relative;
-      padding: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: var(--bg-soft);
-      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .pub-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-      transform: scaleX(0);
-      transition: transform 0.45s ease;
-      transform-origin: center;
-    }
-
-    .pub-card:hover::before { transform: scaleX(1); }
-
-    .pub-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.24);
       background: var(--bg-card);
     }
 
     .pub-card h3 {
-      font-size: 1.05rem;
-      font-weight: 550;
-      line-height: 1.45;
-      margin-bottom: 0.65rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
       letter-spacing: -0.01em;
-      text-wrap: balance;
-      overflow-wrap: anywhere;
-      word-break: normal;
-      hyphens: auto;
-      min-width: 0;
     }
 
     .pub-card .pub-org {
@@ -1153,42 +1120,17 @@
       color: var(--text-soft);
       font-weight: 400;
       margin-bottom: 1rem;
-      line-height: 1.55;
-      overflow-wrap: anywhere;
-      min-width: 0;
-    }
-
-    .pub-card .pub-org a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
     .pub-card p {
       font-size: 0.88rem;
-      line-height: 1.72;
+      line-height: 1.75;
       color: var(--text-soft);
       font-weight: 400;
-      margin-bottom: 1.35rem;
-      overflow-wrap: anywhere;
-      min-width: 0;
-      flex: 1;
+      margin-bottom: 1.5rem;
     }
 
-    @media (max-width: 1024px) {
-      .pub-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-    }
-
-    @media (max-width: 768px) {
-      .pubs { padding: 5rem 0; }
-      .pub-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .pub-card { padding: 1.35rem; border-radius: var(--radius-sm); }
-      .pub-card h3 { font-size: 0.98rem; line-height: 1.42; }
-      .pub-card .pub-org { font-size: 0.78rem; }
-      .pub-card p { font-size: 0.82rem; line-height: 1.68; }
-    }
-
-    /* ===== CERTIFICATIONS ===== *//* ===== CERTIFICATIONS ===== */
+    /* ===== CERTIFICATIONS ===== */
     .certs {
       padding: 7rem 0;
       background: var(--bg);
@@ -1712,84 +1654,17 @@
         border-color: rgba(255, 255, 255, 0.35) !important;
       }
     }
-  
-    @media (max-width: 900px) {
-      .proj-grid,
-      .certs-grid,
-      .c-grid,
-      .values-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        background: transparent !important;
-      }
-
-      .proj-card,
-      .cert-card,
-      .value-card,
-      .c-card {
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: var(--radius);
-        background: var(--bg-soft);
-        min-width: 0;
-      }
-
-      .proj-card h3,
-      .cert-card h3,
-      .value-card h3,
-      .c-card h4,
-      .proj-card p,
-      .cert-card p,
-      .value-card p,
-      .c-desc,
-      .tl-desc,
-      .tl-card h3 {
-        overflow-wrap: anywhere;
-        word-break: normal;
-        hyphens: auto;
-        min-width: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      h2.sec-title { font-size: clamp(1.7rem, 8vw, 2.2rem); line-height: 1.18; margin-bottom: 2rem; }
-      .tag { font-size: 0.7rem; letter-spacing: 0.12em; }
-      .proj-grid,
-      .certs-grid,
-      .skills-grid,
-      .c-grid,
-      .values-grid { grid-template-columns: 1fr !important; }
-      .proj-card,
-      .cert-card,
-      .skill-item,
-      .value-card,
-      .c-card { padding: 1.35rem !important; }
-      .proj-card h3,
-      .skill-item h3,
-      .cert-card h3,
-      .value-card h3,
-      .pub-card h3 { font-size: 1rem !important; line-height: 1.42 !important; }
-      .proj-card p,
-      .skill-item p,
-      .cert-card p,
-      .value-card p,
-      .pub-card p,
-      .c-desc { font-size: 0.84rem !important; line-height: 1.7 !important; }
-      .proj-tags { gap: 0.45rem; }
-      .proj-tags span { font-size: 0.72rem; padding: 0.38rem 0.6rem; }
-      .nav { left: 0.75rem; right: 0.75rem; }
-    }
-
-</style>
+  </style>
 </head>
 <body oncontextmenu="return false;">
 
   <!-- NAV -->
   <nav class="nav" id="nav">
     <a href="#hero" class="nav-logo" id="navLogo">
-      <span>S</span>
-      <span class="nl-fade">oroush  </span>
-      <span class="nl-m">M</span>
-      <span class="nl-fade">irzaei</span>
+      <span>E</span>
+      <span class="nl-fade">hsan  </span>
+      <span class="nl-m">N</span>
+      <span class="nl-fade">aghdbishi</span>
     </a>
 
     <div class="nav-links">
@@ -1830,14 +1705,14 @@
     <div class="hero-grid"></div>
 
     <div class="hero-content">
-      <div class="hero-label" id="heroLabel">Interdisciplinary Engineer</div>
+      <div class="hero-label" id="heroLabel">Chemical Process Engineer</div>
       <h1 id="heroTitle">
-        <span class="block">Seyyed Soroush</span>
-        <span class="block light">Mirzaei</span>
+        <span class="block">Ehsan</span>
+        <span class="block light">Naghdbishi</span>
       </h1>
       <p id="heroP">
-        Bridging <strong>Advanced AI</strong> and <strong>Mechanical Engineering</strong>
-        to build the next generation of autonomous systems.
+        Engineering <strong>bio-based materials</strong> and <strong>process solutions</strong>
+        for water, wastewater, and environmental treatment systems.
       </p>
       <a href="#contact" class="hero-btn" id="heroBtn">
         Get in touch
@@ -1865,58 +1740,21 @@
 
   <div class="divider"></div>
 
-  <!-- VALUES -->
-  <section class="values section">
-    <div class="wrapper">
-      <div class="tag r">Posture</div>
-      <h2 class="sec-title r">
-        The <strong>strategic and digital arm</strong> of your company,
-        fully integrated and operational.
-      </h2>
-
-      <div class="values-grid">
-        <div class="value-card r">
-          <div class="value-num">01</div>
-          <h3>Product Centric, Business Driven</h3>
-          <p>Bring ideas to life through a unique, coherent and emotionally engaging digital experience that bridges engineering with intelligence.</p>
-        </div>
-
-        <div class="value-card r">
-          <div class="value-num">02</div>
-          <h3>Operational Excellence</h3>
-          <p>Ideas, concepts, and slides are good. But it is in the production and the detail that the real difficulty of building something remarkable is hidden.</p>
-        </div>
-
-        <div class="value-card r">
-          <div class="value-num">03</div>
-          <h3>A Genuine Doer's DNA</h3>
-          <p>Business &gt; Product &gt; People: No theory above ground, we work alongside teams to build real and effective solutions that deliver measurable impact.</p>
-        </div>
-
-        <div class="value-card r">
-          <div class="value-num">04</div>
-          <h3>Transparent & Without Detours</h3>
-          <p>Success is based on people and timing. That is why we work in honest collaboration, simple and straightforward.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- MARQUEE 1 -->
   <div class="marquee-wrap">
     <div class="marquee">
       <div class="marquee-item"><span>Technical Competencies</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Deep Learning</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Computer Vision</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>NLP &amp; GenAI</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Engineering</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Software</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Process Design</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biotechnology</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Materials Science</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Research Methods</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Simulation &amp; Software</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span>Technical Competencies</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Deep Learning</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Computer Vision</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>NLP &amp; GenAI</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Engineering</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span>Software</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Process Design</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Biotechnology</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Materials Science</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Research Methods</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span>Simulation &amp; Software</span><div class="marquee-dot"></div></div>
     </div>
   </div>
 
@@ -1930,41 +1768,41 @@
         <div class="skill-item r">
           <div class="skill-head">
             <div class="skill-icon"><i class="fas fa-drafting-compass"></i></div>
-            <h3>Engineering & CAD</h3>
+            <h3>Process Design</h3>
           </div>
-          <p>SolidWorks, Ansys Fluent, ESI PAM-RTM, Mold Flow Analysis, DFM</p>
+          <p>Process Analysis &amp; Design, WWTP Process Design, Pollutant Adsorbent Design &amp; Implementation, Bioreactor Engineering &amp; Scale-Up</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-brain"></i></div>
-            <h3>Deep Learning</h3>
+            <div class="skill-icon"><i class="fas fa-dna"></i></div>
+            <h3>Biotechnology</h3>
           </div>
-          <p>TensorFlow, Keras, PyTorch, GradientTape, Custom Layers, Neural Architecture Search</p>
+          <p>Industrial Microbiology, Fermentation Process Design, Biosorption Kinetics &amp; Isotherm Modeling, Environmental Biotechnology</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-eye"></i></div>
-            <h3>Computer Vision</h3>
+            <div class="skill-icon"><i class="fas fa-flask"></i></div>
+            <h3>Materials Science</h3>
           </div>
-          <p>OpenCV, ResNet-50, U-Net, Mask-RCNN, YOLO, Image Segmentation, Tracking</p>
+          <p>Polymers, Paints &amp; Advanced Resins, Composite Part Design &amp; Implementation, Sustainable &amp; Bio-Based Materials</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
-            <div class="skill-icon"><i class="fas fa-comments"></i></div>
-            <h3>NLP & GenAI</h3>
+            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Research Methods</h3>
           </div>
-          <p>RNNs, LSTMs, GRUs, Transformers, Tokenization, Prompt Engineering</p>
+          <p>Design of Experiments &amp; Response Surface Methodology (DOE/RSM), Kinetic &amp; Statistical Modeling, Peer-Reviewed Technical Writing</p>
         </div>
 
         <div class="skill-item r">
           <div class="skill-head">
             <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>Software & Tools</h3>
+            <h3>Simulation &amp; Software</h3>
           </div>
-          <p>Python, Git/GitHub, MATLAB, SQL, API Integration, MS Project, Office</p>
+          <p>Aspen HYSYS, Pipesim, MATLAB, Design Expert, Python, Microsoft Office, Adobe Photoshop, Adobe Premiere</p>
         </div>
 
         <div class="skill-item r">
@@ -1972,7 +1810,7 @@
             <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
             <h3>Professional Skills</h3>
           </div>
-          <p>Strategic Planning, Technical Documentation, Ideation, Agile, Punctuality</p>
+          <p>Analytical Precision, Laboratory Rigor, Cross-Disciplinary Problem Solving, Independent Research Initiative, Continuous Improvement</p>
         </div>
       </div>
     </div>
@@ -1988,47 +1826,38 @@
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>Technical Documentation Lead (Manufacturing Engineering)</h3>
-            <div class="tl-org">Pars Hesgar Pazh Company</div>
-            <div class="tl-date">Jul 2026 &mdash; Present</div>
-          </div>
-        </div>
-
-        <div class="tl-item r">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <h3>Mechanical & Manufacturing Engineer</h3>
+            <h3>M.Sc. in Chemical Engineering (Biotechnology)</h3>
             <div class="tl-org">Ferdowsi University of Mashhad</div>
-            <div class="tl-date">Jul 2025 &mdash; Jul 2026</div>
+            <div class="tl-date">Oct 2022 &mdash; Feb 2025</div>
+            <div class="tl-desc">GPA: 16.6/20</div>
           </div>
         </div>
 
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>AI & Data Science Researcher</h3>
-            <div class="tl-org">Ferdowsi University of Mashhad</div>
-            <div class="tl-date">Sep 2023 &mdash; Jul 2025</div>
+            <h3>Laboratory Expert</h3>
+            <div class="tl-org">Baspar Payaesh Pars Knowledge-Based Company &mdash; Mashhad, Iran</div>
+            <div class="tl-date">Nov 2021 &mdash; Apr 2022</div>
           </div>
         </div>
 
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>M.Sc. Mechanical Engineering</h3>
-            <div class="tl-org">Ferdowsi University</div>
-            <div class="tl-date">2019 &mdash; 2023</div>
-            <div class="tl-desc">Energy Conversion (GPA: 17.23/20)</div>
+            <h3>B.Sc. in Chemical Engineering</h3>
+            <div class="tl-org">Shahrood University of Technology &mdash; Shahrood, Iran</div>
+            <div class="tl-date">Oct 2016 &mdash; Sep 2021</div>
+            <div class="tl-desc">GPA: 14.49/20</div>
           </div>
         </div>
 
         <div class="tl-item r">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>B.Sc. Mechanical Engineering</h3>
-            <div class="tl-org">Birjand University</div>
-            <div class="tl-date">2014 &mdash; 2019</div>
-            <div class="tl-desc">Fluid Mechanics (GPA: 15.81/20)</div>
+            <h3>Process Intern</h3>
+            <div class="tl-org">East Oil and Gas Exploitation Company &mdash; Khangiran, Iran</div>
+            <div class="tl-date">Jun 2020 &mdash; Sep 2020</div>
           </div>
         </div>
       </div>
@@ -2055,35 +1884,55 @@
 
       <div class="proj-grid">
         <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-camera"></i></div>
-          <h3>Advanced Vision Systems</h3>
-          <p>Custom object detection models (ResNet-50, R-CNN) and semantic segmentation architectures (U-Net, Mask-RCNN) for unstructured industrial environments.</p>
+          <div class="proj-card-icon"><i class="fas fa-vial"></i></div>
+          <h3>Bio-Adsorbent Design for Water Pollutant Removal</h3>
+          <p>Master's thesis at Ferdowsi University of Mashhad: designed and optimized a novel bio-adsorbent for water pollutant removal via DOE/RSM, delivering a low-cost alternative to activated carbon.</p>
           <div class="proj-tags">
-            <span>Object Detection</span>
-            <span>Segmentation</span>
-            <span>Transfer Learning</span>
+            <span>DOE/RSM</span>
+            <span>Biosorption</span>
+            <span>Design Expert</span>
           </div>
         </div>
 
         <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-magic"></i></div>
-          <h3>NLP & Generative AI</h3>
-          <p>Sophisticated Sequence-to-Sequence models (LSTMs, GRUs) for natural language tasks and generative text models for creative sequence prediction.</p>
+          <div class="proj-card-icon"><i class="fas fa-recycle"></i></div>
+          <h3>Zero-Waste Biorefinery Valorization of Coffee Grounds</h3>
+          <p>Engineered a cellulose production process from spent coffee grounds using a series recycle-flow reactor, upcycling effluent into adsorbents for textile wastewater treatment.</p>
           <div class="proj-tags">
-            <span>Seq2Seq</span>
-            <span>LSTM/GRU</span>
-            <span>Generative AI</span>
+            <span>Zero-Waste</span>
+            <span>Cellulose</span>
+            <span>Textile WWT</span>
           </div>
         </div>
 
         <div class="proj-card r">
-          <div class="proj-card-icon"><i class="fas fa-server"></i></div>
-          <h3>HPC & Architecture</h3>
-          <p>Custom training loops using TensorFlow GradientTape and Distributed Training strategies across multi-GPU/TPU cores for high-performance computing.</p>
+          <div class="proj-card-icon"><i class="fas fa-bacterium"></i></div>
+          <h3>Industrial Microbiology &amp; Bioreactor Process Design</h3>
+          <p>Applied fermentation engineering and nanoparticle-enhanced bioprocessing to improve sulfide pollutant removal in activated sludge bioreactors, with kinetic models validated in MATLAB.</p>
           <div class="proj-tags">
-            <span>Distributed Training</span>
-            <span>GradientTape</span>
-            <span>HPC</span>
+            <span>Bioreactors</span>
+            <span>Nanoparticles</span>
+            <span>Kinetic Modeling</span>
+          </div>
+        </div>
+
+        <div class="proj-card r">
+          <div class="proj-card-icon"><i class="fas fa-oil-well"></i></div>
+          <h3>Drilling Fluid Reuse &amp; Wastewater Residue Treatment</h3>
+          <p>Evaluated acidic treatment and reuse of spent drilling fluid on the biological treatability of resulting wastewater residues, presented at a national engineering conference.</p>
+          <div class="proj-tags">
+            <span>Drilling Fluid</span>
+            <span>Wastewater</span>
+          </div>
+        </div>
+
+        <div class="proj-card r">
+          <div class="proj-card-icon"><i class="fas fa-cubes"></i></div>
+          <h3>Materials &amp; Composite Systems</h3>
+          <p>Hands-on work with polymers, paints, and advanced resin compounds, alongside design and implementation of composite parts integrating materials science with manufacturing constraints.</p>
+          <div class="proj-tags">
+            <span>Polymers</span>
+            <span>Composites</span>
           </div>
         </div>
       </div>
@@ -2096,58 +1945,45 @@
       <div class="tag r">Research</div>
       <h2 class="sec-title r">Publications</h2>
 
-      <div class="pub-grid">
+      <div class="pub-card r">
+        <h3>A Zero-Waste Approach to Spent Coffee Grounds Valorization: Cellulose Production in Series Recycle-Flow Reactors with Its Effluent Upcycling into Adsorbents for Textile Wastewater Treatment</h3>
+        <div class="pub-org">International Journal of Biological Macromolecules (2025)</div>
+        <p>Presents a closed-loop, zero-waste process converting spent coffee grounds into cellulose via series recycle-flow reactors, with reactor effluent upcycled into functional adsorbents for textile wastewater treatment.</p>
+        <div class="proj-tags">
+          <span>Zero-Waste</span>
+          <span>Cellulose</span>
+          <span>Textile WWT</span>
+        </div>
+      </div>
 
       <div class="pub-card r">
-        <h3>Utilizing Machine Learning Methods To Simulate The Fast Filling Process In CNG Stations</h3>
-        <div class="pub-org">Master of Science Thesis &mdash; Ferdowsi University of Mashhad (Sep 2023)</div>
-        <p>This thesis introduces a novel approach using machine learning and artificial neural networks (ANNs) to determine thermodynamic properties and simulate the vehicle tank filling process. ANN models replace traditional methods, offering faster simulations with minimal computational power. Validated against AGA8 and GERG-2008 equations of state.</p>
+        <h3>Kinetic Modeling of Sulfide Pollutant Removal in Activated Sludge Bioreactor with Presence of Silica and Graphene Oxide Nanoparticles</h3>
+        <div class="pub-org">Journal of Water and Wastewater (wwcerd.com) &mdash; Ref: WWJ-2108-3173</div>
+        <p>Developed a biosorption kinetic model characterizing sulfide pollutant degradation within an activated sludge bioreactor, quantifying the catalytic and adsorptive contribution of silica and graphene oxide nanoparticles.</p>
         <div class="proj-tags">
-          <span>Machine Learning</span>
-          <span>ANN</span>
-          <span>Thermodynamics</span>
-          <span>Simulation</span>
+          <span>Kinetic Modeling</span>
+          <span>Nanoparticles</span>
+          <span>Bioreactors</span>
         </div>
       </div>
+
+      <div class="pub-card r">
+        <h3>Effect of Acidic Treatment and Reuse of Spent Drilling Fluid on Wastewater Treatment Residues</h3>
+        <div class="pub-org">4th National Conference on Numerical &amp; Experimental Methods in Chemical and Mining Industries (CEC1403) &mdash; Feb 2025</div>
+        <p>Investigated acid-based treatment and reuse strategies for spent drilling fluid to reduce the environmental burden of resulting wastewater treatment residues.</p>
+        <div class="proj-tags">
+          <span>Drilling Fluid</span>
+          <span>Wastewater</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CERTIFICATIONS -->
-  <section class="certs" id="certifications">
-    <div class="wrapper">
-      <div class="tag r">Certifications</div>
-      <h2 class="sec-title r">Professional <strong>Certifications</strong></h2>
-
-      <div class="certs-grid">
-        <div class="cert-card r">
-          <h3>DeepLearning.AI TensorFlow Developer</h3>
-          <p>Validated expertise in building and deploying scalable AI models across Computer Vision, NLP, and Time Series domains.</p>
-        </div>
-
-        <div class="cert-card r">
-          <h3>Advanced Computer Vision</h3>
-          <p>Mastered advanced techniques including object detection, segmentation (U-Net, Mask-RCNN), and model interpretability.</p>
-        </div>
-
-        <div class="cert-card r">
-          <h3>Custom & Distributed Training</h3>
-          <p>Proficiency in custom training loops (GradientTape) and distributed training strategies for HPC.</p>
-        </div>
-
-        <div class="cert-card r">
-          <h3>Custom Models, Layers & Loss Functions</h3>
-          <p>Acquired deep architectural control capabilities, building custom layers for specialized problem-solving.</p>
-        </div>
-
-        <div class="cert-card r">
-          <h3>NLP in TensorFlow</h3>
-          <p>Specialized in sequence modeling and text processing using RNNs, GRUs, and LSTMs for sentiment analysis.</p>
-        </div>
-
-        <div class="cert-card r">
-          <h3>Introduction to TensorFlow for AI</h3>
-          <p>Established a strong foundation in the end-to-end machine learning lifecycle and model optimization.</p>
+      <div class="pub-card r">
+        <h3>Extraction of Plant Cellulose from Coffee Waste</h3>
+        <div class="pub-org">18th National Congress of Chemical Engineering Iran &mdash; Oct 2024</div>
+        <p>Presented an alternative plant-based cellulose extraction methodology derived from coffee waste feedstock.</p>
+        <div class="proj-tags">
+          <span>Cellulose</span>
+          <span>Coffee Waste</span>
         </div>
       </div>
     </div>
@@ -2177,52 +2013,19 @@
     <div class="wrapper">
       <div class="tag r" style="text-align:center">Get In Touch</div>
       <h2 class="sec-title r" style="text-align:center;max-width:600px;margin-left:auto;margin-right:auto">
-        Open to opportunities in <strong>AI</strong>, Digital Twins, and Smart Manufacturing.
+        Open to opportunities in <strong>Environmental Biotechnology</strong>, Sustainable Materials, and Industrial Wastewater Treatment.
       </h2>
 
       <div class="contact-btns r">
-        <a href="mailto:seyyedsoroushmirzaei@protonmail.com" class="c-btn"><i class="fas fa-envelope"></i> Send Email</a>
-        <a href="https://t.me/SorousMirzaei" target="_blank" class="c-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
-        <a href="https://t.me/NeuroVance" target="_blank" class="c-btn"><i class="fas fa-bullhorn"></i> Channel</a>
+        <a href="mailto:ehsan.naghdbishi@gmail.com" class="c-btn"><i class="fas fa-envelope"></i> Send Email</a>
         <button class="c-btn" id="viewResume"><i class="fas fa-file-lines"></i> Resume</button>
       </div>
 
       <div class="c-grid">
         <div class="c-card r">
-          <div class="c-card-icon"><i class="fas fa-briefcase"></i></div>
-          <h4>Developer & Professional</h4>
-          <p class="c-desc">Code repositories and professional network.</p>
-          <div class="c-links">
-            <a href="https://github.com/soroushmirzaei" target="_blank" class="c-link"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://linkedin.com/in/sorousmirzaei" target="_blank" class="c-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://stackoverflow.com/users/19121443" target="_blank" class="c-link"><i class="fab fa-stack-overflow"></i> StackOverflow</a>
-            <a href="https://huggingface.co/soroushmirzaei" target="_blank" class="c-link"><i class="fas fa-robot"></i> HuggingFace</a>
-            <a href="https://kaggle.com/sydsrsmrz" target="_blank" class="c-link"><i class="fab fa-kaggle"></i> Kaggle</a>
-          </div>
-        </div>
-
-        <div class="c-card r">
-          <div class="c-card-icon"><i class="fas fa-share-alt"></i></div>
-          <h4>Social & Creative</h4>
-          <p class="c-desc">Connect on social and creative platforms.</p>
-          <div class="c-links">
-            <a href="https://x.com/sorousmirzaei" target="_blank" class="c-link"><i class="fab fa-x-twitter"></i> Twitter</a>
-            <a href="https://instagram.com/sorousmirzaie" target="_blank" class="c-link"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://soroushmirzaei.medium.com/" target="_blank" class="c-link"><i class="fab fa-medium"></i> Medium</a>
-            <a href="https://pinterest.com/sorousmirzaei/" target="_blank" class="c-link"><i class="fab fa-pinterest"></i> Pinterest</a>
-            <a href="https://soundcloud.com/soroushmirzaei" target="_blank" class="c-link"><i class="fab fa-soundcloud"></i> SoundCloud</a>
-            <a href="https://open.spotify.com/user/31yy2ufrkd24iojhxcupfbvpqosi" target="_blank" class="c-link"><i class="fab fa-spotify"></i> Spotify</a>
-          </div>
-        </div>
-
-        <div class="c-card r">
-          <div class="c-card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h4>Certifications & Learning</h4>
-          <p class="c-desc">Track my learning journey and achievements.</p>
-          <div class="c-links">
-            <a href="https://coursera.org/learner/soroushmirzaei" target="_blank" class="c-link"><i class="fas fa-graduation-cap"></i> Coursera</a>
-            <a href="https://duolingo.com/profile/soroushmirzaei" target="_blank" class="c-link"><i class="fas fa-language"></i> Duolingo</a>
-          </div>
+          <div class="c-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h4>Location</h4>
+          <p class="c-desc">Mashhad, Razavi Khorasan Province, Islamic Republic of Iran.</p>
         </div>
       </div>
     </div>
@@ -2240,8 +2043,8 @@
 
     <div class="wrapper">
       <div class="footer-bot">
-        <div class="footer-motto">Strategic sparring partner in engineering, AI &amp; digital innovation.</div>
-        <div class="tag r">Soroush Mirzaei</div>
+        <div class="footer-motto">Engineering sustainable solutions for water, wastewater, and environmental treatment.</div>
+        <div class="tag r">Ehsan Naghdbishi</div>
       </div>
     </div>
   </footer>
@@ -2252,11 +2055,7 @@
       <div class="modal-top">
         <h3>Resume</h3>
         <div class="modal-actions">
-          <div class="lang-switch">
-            <button class="active" id="langEn">English</button>
-            <button id="langFa">Persian</button>
-          </div>
-          <a id="dlBtn" href="soroush-mirzaei-eng.pdf" download="soroush-mirzaei-eng.pdf" class="dl-btn">
+          <a id="dlBtn" href="ehsan-naghdbishi-resume.pdf" download="ehsan-naghdbishi-resume.pdf" class="dl-btn">
             <i class="fas fa-download"></i> Download
           </a>
           <button class="modal-close" id="closeResume"><i class="fas fa-times"></i></button>
@@ -2264,7 +2063,7 @@
       </div>
 
       <div class="modal-body">
-        <iframe id="resumeIframe" src="soroush-mirzaei-eng.pdf#toolbar=0&navpanes=0" title="Resume"></iframe>
+        <iframe id="resumeIframe" src="ehsan-naghdbishi-resume.pdf#toolbar=0&navpanes=0" title="Resume"></iframe>
       </div>
     </div>
   </div>
@@ -2318,13 +2117,13 @@
 
       // ===== HERO — DECODE EFFECT =====
       const _C = {
-        'S': 'S$5s', 'e': 'e3cao', 'y': 'yvx', 'd': 'dbp',
-        'o': 'oa0e', 'r': 'rnm', 'u': 'uvn', 's': 'szS5',
-        'h': 'hnb', 'M': 'MWm', 'i': 'ilj1', 'z': 'zsZ2', 'a': 'aeo'
+        'E': 'E3$e', 'h': 'hnb', 's': 'szS5', 'a': 'aeo',
+        'n': 'nmr', 'N': 'NMm', 'g': 'g9q', 'd': 'dbp',
+        'b': 'bpd', 'i': 'ilj1'
       };
 
       const _spans = document.querySelectorAll('#heroTitle span');
-      const _final = ['Seyyed Soroush', 'Mirzaei'];
+      const _final = ['Ehsan', 'Naghdbishi'];
       const _anim = [];
 
       _spans.forEach((e, i) => {
@@ -2401,8 +2200,6 @@
 
       // ===== RESUME MODAL =====
       const rm = document.getElementById('resumeModal');
-      const ri = document.getElementById('resumeIframe');
-      const db = document.getElementById('dlBtn');
 
       document.getElementById('viewResume').addEventListener('click', () => {
         rm.classList.add('active');
@@ -2419,22 +2216,6 @@
           rm.classList.remove('active');
           document.body.style.overflow = '';
         }
-      });
-
-      document.getElementById('langEn').addEventListener('click', () => {
-        document.getElementById('langEn').classList.add('active');
-        document.getElementById('langFa').classList.remove('active');
-        ri.src = 'soroush-mirzaei-eng.pdf#toolbar=0&navpanes=0';
-        db.href = 'soroush-mirzaei-eng.pdf';
-        db.download = 'soroush-mirzaei-eng.pdf';
-      });
-
-      document.getElementById('langFa').addEventListener('click', () => {
-        document.getElementById('langFa').classList.add('active');
-        document.getElementById('langEn').classList.remove('active');
-        ri.src = 'soroush-mirzaei-per.pdf#toolbar=0&navpanes=0';
-        db.href = 'soroush-mirzaei-per.pdf';
-        db.download = 'soroush-mirzaei-per.pdf';
       });
 
       // ===== ESCAPE KEY =====
