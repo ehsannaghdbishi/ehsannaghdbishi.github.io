@@ -127,18 +127,31 @@
       --radius-sm: 8px;
       --font-display: 'AlmarenaNeueDisplay', 'Space Grotesk', sans-serif;
 
-      /* ===== BIO / GREEN ACCENT SYSTEM ===== */
-      --bio-green: #3ddc84;
-      --bio-green-soft: #7fe8ab;
-      --bio-green-deep: #14532d;
-      --bio-green-glow: rgba(61, 220, 132, 0.35);
-      --bio-green-dim: rgba(61, 220, 132, 0.12);
-      --bio-border-hover: rgba(61, 220, 132, 0.45);
+      /* ===== BIO / GREEN ACCENT SYSTEM v3 — refined dual-tone palette ===== */
+      --bio-green: #34d399;
+      --bio-green-soft: #86efc0;
+      --bio-green-bright: #5eead4;
+      --bio-green-deep: #0f3d2e;
+      --bio-green-deepest: #08241b;
+      --bio-teal: #22d3ee;
+      --bio-lime: #a3e635;
+      --bio-green-glow: rgba(52, 211, 153, 0.38);
+      --bio-green-glow-strong: rgba(52, 211, 153, 0.55);
+      --bio-green-dim: rgba(52, 211, 153, 0.10);
+      --bio-teal-dim: rgba(34, 211, 238, 0.10);
+      --bio-border-hover: rgba(52, 211, 153, 0.5);
+      --bio-gradient: linear-gradient(135deg, var(--bio-green) 0%, var(--bio-teal) 100%);
+      --bio-gradient-text: linear-gradient(135deg, var(--bio-green-soft) 0%, var(--bio-green-bright) 55%, var(--bio-teal) 100%);
     }
 
     html {
       scrollbar-color: var(--bio-green-deep) var(--bg);
       scrollbar-width: thin;
+    }
+
+    ::selection {
+      background: var(--bio-green-dim);
+      color: var(--bio-green-soft);
     }
 
     /* ===== NAVIGATION ===== */
@@ -156,18 +169,74 @@
       -webkit-backdrop-filter: blur(32px) saturate(200%);
       backdrop-filter: blur(32px) saturate(200%);
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--bio-green-dim);
+      border-top: 1px solid rgba(134, 239, 192, 0.22);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(52, 211, 153, 0.06),
+        0 0 22px var(--bio-green-dim),
+        0 0 46px rgba(34, 211, 238, 0.06);
       transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1),
-                  background 0.4s ease;
+                  background 0.4s ease,
+                  box-shadow 0.6s ease,
+                  border-color 0.6s ease;
+      animation: navGlowBreathe 5.5s ease-in-out infinite;
+    }
+
+    .nav::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: 17px;
+      background: linear-gradient(120deg,
+        transparent 20%,
+        var(--bio-green-soft) 45%,
+        var(--bio-teal) 55%,
+        transparent 80%);
+      background-size: 200% 200%;
+      opacity: 0.22;
+      filter: blur(6px);
+      animation: navSheen 7s linear infinite;
+      pointer-events: none;
     }
 
     .nav.scrolled {
       background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.12);
-      border-top-color: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border-color: var(--bio-border-hover);
+      border-top-color: rgba(134, 239, 192, 0.3);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(52, 211, 153, 0.1),
+        0 0 30px var(--bio-green-glow),
+        0 0 60px rgba(34, 211, 238, 0.1);
+    }
+
+    @keyframes navGlowBreathe {
+      0%, 100% {
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.35),
+          0 0 0 1px rgba(52, 211, 153, 0.06),
+          0 0 22px var(--bio-green-dim),
+          0 0 46px rgba(34, 211, 238, 0.06);
+      }
+      50% {
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.35),
+          0 0 0 1px rgba(52, 211, 153, 0.12),
+          0 0 34px var(--bio-green-glow),
+          0 0 64px rgba(34, 211, 238, 0.12);
+      }
+    }
+
+    @keyframes navSheen {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav { animation: none; }
+      .nav::before { animation: none; opacity: 0.12; }
     }
 
     .nav-logo {
@@ -499,10 +568,10 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 800px;
-      height: 800px;
+      width: 900px;
+      height: 900px;
       transform: translate(-50%, -60%);
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, var(--bio-green-dim) 35%, transparent 65%);
+      background: radial-gradient(circle, var(--bio-teal-dim) 0%, var(--bio-green-dim) 40%, transparent 68%);
       pointer-events: none;
     }
 
@@ -511,18 +580,18 @@
       position: absolute;
       top: 55%;
       left: 50%;
-      width: 1100px;
-      height: 1100px;
+      width: 1200px;
+      height: 1200px;
       transform: translate(-50%, -50%);
-      background: radial-gradient(circle, transparent 55%, var(--bio-green-dim) 60%, transparent 62%);
-      opacity: 0.5;
+      background: radial-gradient(circle, transparent 55%, var(--bio-green-glow) 60%, transparent 63%);
+      opacity: 0.4;
       animation: pulseRing 6s ease-in-out infinite;
       pointer-events: none;
     }
 
     @keyframes pulseRing {
-      0%, 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(0.96); }
-      50% { opacity: 0.55; transform: translate(-50%, -50%) scale(1.04); }
+      0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.96); }
+      50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.04); }
     }
 
     .hero-grid {
@@ -565,7 +634,11 @@
 
     .hero h1 .light {
       font-weight: 300;
-      opacity: 0.55;
+      opacity: 0.9;
+      background: var(--bio-gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero h1 .block {
@@ -727,6 +800,8 @@
     .values {
       background: var(--bg);
       padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
     }
 
     .values-grid {
@@ -1757,23 +1832,41 @@
       .nav { left: 0.75rem; right: 0.75rem; }
     }
   
-    /* ===== MOLECULE CANVAS (Firefox-compatible Canvas2D) ===== */
+    /* ===== MOLECULE CANVAS v3 — full-page fixed chemistry background ===== */
     .molecule-canvas {
-      position: absolute;
+      position: fixed;
       inset: 0;
       z-index: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 0.55;
+      mix-blend-mode: screen;
     }
 
     @media (max-width: 700px) {
-      .molecule-canvas { opacity: 0.55; }
+      .molecule-canvas { opacity: 0.35; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .molecule-canvas { display: none; }
+    }
+
+    /* Ensure all page sections sit above the fixed molecule background (no positioning conflicts) */
+    .manifesto,
+    .divider,
+    section.section,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav { z-index: 1000; }
+    .mobile-panel { z-index: 999; }
+    .modal { z-index: 2000; }
+
+    body {
+      position: relative;
     }
 
     /* ===== DNA HELIX STRAND (pure CSS, Firefox-safe) ===== */
@@ -1799,7 +1892,7 @@
       left: 50%;
       width: 46px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--bio-green), transparent);
+      background: var(--bio-gradient);
       transform-origin: center;
       animation: dnaSpin 5s linear infinite;
     }
@@ -1823,7 +1916,7 @@
       left: -30%;
       width: 30%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, var(--bio-green-soft), transparent);
+      background: linear-gradient(90deg, transparent, var(--bio-green-bright), var(--bio-teal), transparent);
       filter: blur(1px);
       animation: bioFlow 5.5s ease-in-out infinite;
       will-change: transform;
@@ -1856,9 +1949,9 @@
       width: 9px;
       height: 9px;
       transform: translateY(-50%);
-      background: var(--bio-green);
+      background: var(--bio-gradient);
       clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-      box-shadow: 0 0 8px var(--bio-green-glow);
+      box-shadow: 0 0 10px var(--bio-green-glow-strong);
       animation: hexPulse 2.4s ease-in-out infinite;
     }
 
@@ -1867,12 +1960,239 @@
       50% { opacity: 1; transform: translateY(-50%) scale(1.15); }
     }
 
+
+    /* ===== VER 4 — DOMAIN-SPECIFIC BIOTECH ANIMATIONS ===== */
+
+    /* --- Floating discipline icons (Environmental Biotech, Fermentation, Biosorption, etc.) --- */
+    .bio-icon-field {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bio-icon-field .bicon {
+      position: absolute;
+      color: var(--bio-green);
+      opacity: 0;
+      font-size: 1.1rem;
+      filter: drop-shadow(0 0 6px var(--bio-green-glow));
+      animation: bioFloat linear infinite;
+    }
+
+    @keyframes bioFloat {
+      0%   { transform: translate(0, 0) rotate(0deg) scale(0.9); opacity: 0; }
+      8%   { opacity: 0.55; }
+      50%  { transform: translate(var(--dx, 40px), -55vh) rotate(180deg) scale(1.1); opacity: 0.4; }
+      92%  { opacity: 0.4; }
+      100% { transform: translate(var(--dx2, -30px), -110vh) rotate(360deg) scale(0.9); opacity: 0; }
+    }
+
+    @media (max-width: 700px) {
+      .bio-icon-field { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bio-icon-field { display: none; }
+    }
+
+    /* --- Fermentation / bioreactor rising bubbles (Fermentation Engineering, Bioprocess Scale-Up) --- */
+    .bioreactor-bubbles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bioreactor-bubbles .bubble {
+      position: absolute;
+      bottom: -40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--bio-green-soft), var(--bio-green-dim) 70%, transparent);
+      border: 1px solid var(--bio-green-glow);
+      opacity: 0;
+      animation: bubbleRise linear infinite;
+    }
+
+    @keyframes bubbleRise {
+      0%   { transform: translateY(0) translateX(0) scale(0.7); opacity: 0; }
+      10%  { opacity: 0.55; }
+      85%  { opacity: 0.35; }
+      100% { transform: translateY(-105vh) translateX(var(--drift, 20px)) scale(1.15); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bioreactor-bubbles { display: none; }
+    }
+
+    /* ===== VER 5 — HYROUND-INSPIRED 3D WIREFRAME ENERGY GLOBE (green/black "Earth") ===== */
+    /* CSS 3D transforms + perspective are core Firefox features (no prefixes needed). */
+    .hy-globe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 640px;
+      height: 640px;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+      perspective: 1400px;
+      opacity: 0.9;
+    }
+
+    .hy-globe-core {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      animation: hyGlobeSpin 26s linear infinite;
+    }
+
+    .hy-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.4px solid var(--bio-green-glow);
+      box-shadow: 0 0 24px var(--bio-green-dim) inset;
+      transform-style: preserve-3d;
+    }
+
+    /* Each ring represents a latitude/longitude line of a rotating wireframe planet,
+       echoing Hyround's Earth/globe motif in green-on-black. */
+    .hy-ring.r1 { transform: rotateY(0deg); }
+    .hy-ring.r2 { transform: rotateY(30deg); border-color: var(--bio-teal-dim); }
+    .hy-ring.r3 { transform: rotateY(60deg); }
+    .hy-ring.r4 { transform: rotateY(90deg); border-color: var(--bio-teal-dim); opacity: 0.7; }
+    .hy-ring.r5 { transform: rotateY(120deg); }
+    .hy-ring.r6 {
+      transform: rotateX(90deg);
+      border-color: var(--bio-green-soft);
+      opacity: 0.55;
+      border-style: dashed;
+    }
+
+    .hy-glow-orb {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--bio-green-soft) 0%, var(--bio-green) 40%, transparent 75%);
+      filter: blur(6px);
+      animation: hyOrbPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes hyGlobeSpin {
+      from { transform: rotateY(0deg) rotateX(8deg); }
+      to   { transform: rotateY(360deg) rotateX(8deg); }
+    }
+
+    @keyframes hyOrbPulse {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.9); }
+      50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    @media (max-width: 900px) {
+      .hy-globe { width: 380px; height: 380px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hy-globe-core, .hy-glow-orb { animation: none; }
+    }
+
+    /* --- 3D energy-wave fallback layer (used together with the globe for extra Hyround-style depth) --- */
+    .hy-globe-core::after {
+      content: '';
+      position: absolute;
+      inset: -60px;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle,
+          transparent 0,
+          transparent 38px,
+          var(--bio-green-dim) 39px,
+          transparent 41px);
+      animation: hyWavePulse 5s ease-in-out infinite;
+      transform: translateZ(-40px);
+    }
+
+    @keyframes hyWavePulse {
+      0%, 100% { opacity: 0.35; transform: translateZ(-40px) scale(0.94); }
+      50%      { opacity: 0.7;  transform: translateZ(-40px) scale(1.04); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hy-globe-core::after { animation: none; }
+    }
+
+    /* --- Water treatment ripple (Environmental Biotechnology, Wastewater Treatment, Water Quality) --- */
+    .water-ripple {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .water-ripple::before,
+    .water-ripple::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      border: 1.5px solid var(--bio-teal-dim);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: rippleOut 6s ease-out infinite;
+    }
+
+    .water-ripple::after {
+      animation-delay: 2s;
+      border-color: var(--bio-green-dim);
+    }
+
+    @keyframes rippleOut {
+      0%   { width: 40px; height: 40px; opacity: 0.6; }
+      100% { width: 900px; height: 900px; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .water-ripple::before, .water-ripple::after { animation: none; display: none; }
+    }
+
+    /* --- Biosorption / adsorbent particle-capture pulse on skill & project cards --- */
+    .value-card, .proj-card, .cert-card, .tl-card {
+      position: relative;
+    }
+
+    .value-card::before, .proj-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0%;
+      background: var(--bio-gradient);
+      transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .value-card:hover::before, .proj-card:hover::before {
+      height: 100%;
+    }
+
 </style>
 </head>
 <body oncontextmenu="return false;">
 
   <!-- DNA HELIX DECORATION (desktop only) -->
   <div class="dna-strand" id="dnaStrand" aria-hidden="true"></div>
+  <canvas class="molecule-canvas" id="moleculeCanvas" aria-hidden="true"></canvas>
+  <div class="bio-icon-field" id="bioIconField" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -1919,7 +2239,7 @@
   <section class="hero" id="hero">
     <div class="hero-glow"></div>
     <div class="hero-grid"></div>
-    <canvas class="molecule-canvas" id="moleculeCanvas" aria-hidden="true"></canvas>
+    <div class="bioreactor-bubbles" id="bioreactorBubbles" aria-hidden="true"></div>
 
     <div class="hero-content">
       <div class="hero-label" id="heroLabel">Chemical Biotechnology Researcher</div>
@@ -1947,6 +2267,7 @@
 
   <!-- MANIFESTO -->
   <section class="manifesto" id="about">
+    <div class="water-ripple" aria-hidden="true"></div>
     <div class="manifesto-text r">
       We are <strong>sustainability-driven innovators</strong>. We combine
       <strong>Environmental Biotechnology</strong>, <strong>Bioprocess Engineering</strong>,
@@ -1959,6 +2280,17 @@
 
   <!-- VALUES -->
   <section class="values section">
+    <div class="hy-globe" aria-hidden="true">
+      <div class="hy-globe-core">
+        <div class="hy-ring r1"></div>
+        <div class="hy-ring r2"></div>
+        <div class="hy-ring r3"></div>
+        <div class="hy-ring r4"></div>
+        <div class="hy-ring r5"></div>
+        <div class="hy-ring r6"></div>
+        <div class="hy-glow-orb"></div>
+      </div>
+    </div>
     <div class="wrapper">
       <div class="tag r">Posture</div>
       <h2 class="sec-title r">
@@ -2351,6 +2683,80 @@
       gsap.ticker.add(t => lenis.raf(t * 1000));
       gsap.ticker.lagSmoothing(0);
 
+      // ===== VER 4: FLOATING DISCIPLINE ICON FIELD =====
+      // Represents: Environmental Biotechnology, Wastewater Treatment, Water Quality Engineering,
+      // Bioprocess Engineering & Design, Bioprocess Scale-Up, Industrial Biotechnology,
+      // Circular Bioeconomy, Resource Recovery, Biosorption, Adsorbent Materials,
+      // Sustainable / Bio-Based Materials, Biorefinery, Fermentation Engineering,
+      // Environmental Process Engineering, Applied Biotechnology.
+      (function initBioIconField() {
+        const field = document.getElementById('bioIconField');
+        if (!field) return;
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced || window.innerWidth < 700) return;
+
+        const ICONS = [
+          'fa-solid fa-flask-vial',        // fermentation engineering / applied biotechnology
+          'fa-solid fa-droplet',           // wastewater / water quality engineering
+          'fa-solid fa-recycle',           // circular bioeconomy / resource recovery
+          'fa-solid fa-dna',               // industrial biotechnology
+          'fa-solid fa-atom',              // bioprocess engineering & design
+          'fa-solid fa-leaf',              // bio-based / sustainable materials
+          'fa-solid fa-filter',            // biosorption / adsorbent materials
+          'fa-solid fa-industry',          // bioprocess scale-up / biorefinery
+          'fa-solid fa-water',             // environmental process engineering
+          'fa-solid fa-seedling'           // circular economy / bio-based feedstock
+        ];
+
+        const count = 16;
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('i');
+          el.className = 'bicon ' + ICONS[i % ICONS.length];
+          const left = Math.random() * 100;
+          const dur = 22 + Math.random() * 18;
+          const delay = -(Math.random() * dur);
+          const dx = (Math.random() - 0.5) * 120;
+          const dx2 = (Math.random() - 0.5) * 160;
+          const size = 0.9 + Math.random() * 0.9;
+
+          el.style.left = left + '%';
+          el.style.bottom = '-5%';
+          el.style.fontSize = size + 'rem';
+          el.style.animationDuration = dur + 's';
+          el.style.animationDelay = delay + 's';
+          el.style.setProperty('--dx', dx + 'px');
+          el.style.setProperty('--dx2', dx2 + 'px');
+          field.appendChild(el);
+        }
+      })();
+
+      // ===== VER 4: BIOREACTOR FERMENTATION BUBBLES (in hero) =====
+      (function initBioreactorBubbles() {
+        const rail = document.getElementById('bioreactorBubbles');
+        if (!rail) return;
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) return;
+
+        const count = window.innerWidth < 700 ? 10 : 20;
+        for (let i = 0; i < count; i++) {
+          const b = document.createElement('div');
+          b.className = 'bubble';
+          const size = 6 + Math.random() * 16;
+          const left = Math.random() * 100;
+          const dur = 6 + Math.random() * 8;
+          const delay = -(Math.random() * dur);
+          const drift = (Math.random() - 0.5) * 60;
+
+          b.style.width = size + 'px';
+          b.style.height = size + 'px';
+          b.style.left = left + '%';
+          b.style.animationDuration = dur + 's';
+          b.style.animationDelay = delay + 's';
+          b.style.setProperty('--drift', drift + 'px');
+          rail.appendChild(b);
+        }
+      })();
+
       // ===== DNA HELIX RUNG GENERATOR =====
       const dnaStrand = document.getElementById('dnaStrand');
       if (dnaStrand) {
@@ -2364,12 +2770,11 @@
         }
       }
 
-      // ===== MOLECULE / CHEMISTRY BOND CANVAS (Canvas2D — Firefox desktop verified) =====
+      // ===== MOLECULE / CHEMISTRY BOND CANVAS v3 — full-page fixed background (Canvas2D, Firefox desktop verified) =====
       (function initMoleculeCanvas() {
         const canvas = document.getElementById('moleculeCanvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-        const heroSection = document.getElementById('hero');
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReduced) return;
 
@@ -2378,15 +2783,14 @@
         let animId = null;
         let running = true;
 
-        const ATOM_COLORS = ['#3ddc84', '#7fe8ab', 'rgba(255,255,255,0.85)'];
-        const LINK_DIST = 150;
-        const ATOM_COUNT_BASE = 46;
+        const ATOM_COLORS = ['#34d399', '#86efc0', '#5eead4', '#22d3ee', 'rgba(255,255,255,0.7)'];
+        const LINK_DIST = 165;
+        const ATOM_COUNT_BASE = 68;
 
         function resize() {
-          const rect = heroSection.getBoundingClientRect();
           DPR = Math.min(window.devicePixelRatio || 1, 2);
-          W = rect.width;
-          H = rect.height;
+          W = window.innerWidth;
+          H = window.innerHeight;
           canvas.width = W * DPR;
           canvas.height = H * DPR;
           canvas.style.width = W + 'px';
@@ -2395,16 +2799,16 @@
         }
 
         function seedAtoms() {
-          const count = W < 700 ? Math.round(ATOM_COUNT_BASE * 0.55) : ATOM_COUNT_BASE;
+          const count = W < 700 ? Math.round(ATOM_COUNT_BASE * 0.45) : ATOM_COUNT_BASE;
           atoms = [];
           for (let i = 0; i < count; i++) {
-            const isCore = Math.random() < 0.18;
+            const isCore = Math.random() < 0.16;
             atoms.push({
               x: Math.random() * W,
               y: Math.random() * H,
-              vx: (Math.random() - 0.5) * 0.28,
-              vy: (Math.random() - 0.5) * 0.28,
-              r: isCore ? (2.4 + Math.random() * 1.6) : (1.2 + Math.random() * 1.2),
+              vx: (Math.random() - 0.5) * 0.22,
+              vy: (Math.random() - 0.5) * 0.22,
+              r: isCore ? (2.6 + Math.random() * 1.8) : (1.1 + Math.random() * 1.1),
               color: ATOM_COLORS[Math.floor(Math.random() * ATOM_COLORS.length)],
               pulse: Math.random() * Math.PI * 2
             });
@@ -2419,7 +2823,7 @@
             const a = atoms[i];
             a.x += a.vx;
             a.y += a.vy;
-            a.pulse += 0.02;
+            a.pulse += 0.018;
 
             if (a.x < -20) a.x = W + 20;
             if (a.x > W + 20) a.x = -20;
@@ -2433,9 +2837,9 @@
               const dx = a.x - b.x, dy = a.y - b.y;
               const dist = Math.sqrt(dx * dx + dy * dy);
               if (dist < LINK_DIST) {
-                const alpha = (1 - dist / LINK_DIST) * 0.35;
-                ctx.strokeStyle = 'rgba(61, 220, 132,' + alpha.toFixed(3) + ')';
-                ctx.lineWidth = 0.8;
+                const alpha = (1 - dist / LINK_DIST) * 0.22;
+                ctx.strokeStyle = 'rgba(52, 211, 153,' + alpha.toFixed(3) + ')';
+                ctx.lineWidth = 0.7;
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
@@ -2446,7 +2850,7 @@
 
           for (let i = 0; i < atoms.length; i++) {
             const a = atoms[i];
-            const glow = 0.55 + Math.sin(a.pulse) * 0.35;
+            const glow = 0.5 + Math.sin(a.pulse) * 0.3;
             ctx.beginPath();
             ctx.fillStyle = a.color;
             ctx.globalAlpha = glow;
@@ -2489,16 +2893,6 @@
           if (document.hidden) stop();
           else start();
         });
-
-        if ('IntersectionObserver' in window) {
-          const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) start();
-              else stop();
-            });
-          }, { threshold: 0.05 });
-          io.observe(heroSection);
-        }
       })();
 
       // ===== NAV =====
