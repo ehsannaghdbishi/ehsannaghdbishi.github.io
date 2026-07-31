@@ -107,6 +107,11 @@
       letter-spacing: -0.02em;
     }
 
+    strong {
+      color: var(--bio-green-soft);
+      font-weight: 600;
+    }
+
     /* ===== THEME ===== */
     :root {
       --bg: #0a0a0a;
@@ -121,6 +126,19 @@
       --radius: 16px;
       --radius-sm: 8px;
       --font-display: 'AlmarenaNeueDisplay', 'Space Grotesk', sans-serif;
+
+      /* ===== BIO / GREEN ACCENT SYSTEM ===== */
+      --bio-green: #3ddc84;
+      --bio-green-soft: #7fe8ab;
+      --bio-green-deep: #14532d;
+      --bio-green-glow: rgba(61, 220, 132, 0.35);
+      --bio-green-dim: rgba(61, 220, 132, 0.12);
+      --bio-border-hover: rgba(61, 220, 132, 0.45);
+    }
+
+    html {
+      scrollbar-color: var(--bio-green-deep) var(--bg);
+      scrollbar-width: thin;
     }
 
     /* ===== NAVIGATION ===== */
@@ -222,11 +240,12 @@
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--bio-green-soft);
+      text-shadow: 0 0 12px var(--bio-green-glow);
     }
 
     .nav-links a.active {
-      color: var(--text);
+      color: var(--bio-green-soft);
     }
 
     .nav-cta {
@@ -250,8 +269,9 @@
     }
 
     .nav-cta:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-card);
+      border-color: var(--bio-border-hover);
+      background: var(--bio-green-dim);
+      box-shadow: 0 0 24px var(--bio-green-glow);
       transform: translateY(-1px);
     }
 
@@ -482,8 +502,27 @@
       width: 800px;
       height: 800px;
       transform: translate(-50%, -60%);
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, var(--bio-green-dim) 35%, transparent 65%);
       pointer-events: none;
+    }
+
+    .hero-glow::after {
+      content: '';
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      width: 1100px;
+      height: 1100px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, transparent 55%, var(--bio-green-dim) 60%, transparent 62%);
+      opacity: 0.5;
+      animation: pulseRing 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(0.96); }
+      50% { opacity: 0.55; transform: translate(-50%, -50%) scale(1.04); }
     }
 
     .hero-grid {
@@ -561,8 +600,9 @@
     }
 
     .hero-btn:hover {
-      border-color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--bio-green);
+      background: var(--bio-green-dim);
+      box-shadow: 0 0 32px var(--bio-green-glow);
       transform: translateY(-2px);
     }
 
@@ -724,7 +764,14 @@
     .value-card:hover {
       background: var(--bg-soft);
       transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 var(--bio-green-dim), 0 12px 40px -20px var(--bio-green-glow);
       transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .value-card:hover .value-num {
+      color: var(--bio-green-soft);
+      text-shadow: 0 0 10px var(--bio-green-glow);
+      transition: color 0.4s ease, text-shadow 0.4s ease;
     }
 
     .value-num {
@@ -1709,9 +1756,123 @@
       .proj-tags span { font-size: 0.72rem; padding: 0.38rem 0.6rem; }
       .nav { left: 0.75rem; right: 0.75rem; }
     }
-  </style>
+  
+    /* ===== MOLECULE CANVAS (Firefox-compatible Canvas2D) ===== */
+    .molecule-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 700px) {
+      .molecule-canvas { opacity: 0.55; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .molecule-canvas { display: none; }
+    }
+
+    /* ===== DNA HELIX STRAND (pure CSS, Firefox-safe) ===== */
+    .dna-strand {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 64px;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.22;
+      overflow: hidden;
+      display: none;
+    }
+
+    @media (min-width: 1200px) {
+      .dna-strand { display: block; }
+    }
+
+    .dna-strand .rung {
+      position: absolute;
+      left: 50%;
+      width: 46px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--bio-green), transparent);
+      transform-origin: center;
+      animation: dnaSpin 5s linear infinite;
+    }
+
+    @keyframes dnaSpin {
+      0%   { transform: translateX(-50%) rotateY(0deg) scaleX(1); opacity: 0.9; }
+      50%  { transform: translateX(-50%) rotateY(180deg) scaleX(0.15); opacity: 0.25; }
+      100% { transform: translateX(-50%) rotateY(360deg) scaleX(1); opacity: 0.9; }
+    }
+
+    /* ===== BIO PULSE DIVIDER (chemistry reaction-flow line) ===== */
+    .divider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--bio-green-soft), transparent);
+      filter: blur(1px);
+      animation: bioFlow 5.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes bioFlow {
+      0%   { left: -30%; opacity: 0; }
+      10%  { opacity: 0.9; }
+      50%  { opacity: 0.9; }
+      90%  { opacity: 0; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .divider::after,
+      .dna-strand .rung { animation: none; display: none; }
+    }
+
+    /* ===== BIO HEXAGON BENZENE-RING ACCENT (chemistry motif, on section tags) ===== */
+    .tag {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .tag::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      transform: translateY(-50%);
+      background: var(--bio-green);
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+      box-shadow: 0 0 8px var(--bio-green-glow);
+      animation: hexPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes hexPulse {
+      0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(0.85); }
+      50% { opacity: 1; transform: translateY(-50%) scale(1.15); }
+    }
+
+</style>
 </head>
 <body oncontextmenu="return false;">
+
+  <!-- DNA HELIX DECORATION (desktop only) -->
+  <div class="dna-strand" id="dnaStrand" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -1758,6 +1919,7 @@
   <section class="hero" id="hero">
     <div class="hero-glow"></div>
     <div class="hero-grid"></div>
+    <canvas class="molecule-canvas" id="moleculeCanvas" aria-hidden="true"></canvas>
 
     <div class="hero-content">
       <div class="hero-label" id="heroLabel">Chemical Biotechnology Researcher</div>
@@ -2188,6 +2350,156 @@
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(t => lenis.raf(t * 1000));
       gsap.ticker.lagSmoothing(0);
+
+      // ===== DNA HELIX RUNG GENERATOR =====
+      const dnaStrand = document.getElementById('dnaStrand');
+      if (dnaStrand) {
+        const rungCount = 22;
+        for (let i = 0; i < rungCount; i++) {
+          const rung = document.createElement('div');
+          rung.className = 'rung';
+          rung.style.top = (i * (100 / rungCount)) + '%';
+          rung.style.animationDelay = (i * -0.22) + 's';
+          dnaStrand.appendChild(rung);
+        }
+      }
+
+      // ===== MOLECULE / CHEMISTRY BOND CANVAS (Canvas2D — Firefox desktop verified) =====
+      (function initMoleculeCanvas() {
+        const canvas = document.getElementById('moleculeCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const heroSection = document.getElementById('hero');
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) return;
+
+        let W, H, DPR;
+        let atoms = [];
+        let animId = null;
+        let running = true;
+
+        const ATOM_COLORS = ['#3ddc84', '#7fe8ab', 'rgba(255,255,255,0.85)'];
+        const LINK_DIST = 150;
+        const ATOM_COUNT_BASE = 46;
+
+        function resize() {
+          const rect = heroSection.getBoundingClientRect();
+          DPR = Math.min(window.devicePixelRatio || 1, 2);
+          W = rect.width;
+          H = rect.height;
+          canvas.width = W * DPR;
+          canvas.height = H * DPR;
+          canvas.style.width = W + 'px';
+          canvas.style.height = H + 'px';
+          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        }
+
+        function seedAtoms() {
+          const count = W < 700 ? Math.round(ATOM_COUNT_BASE * 0.55) : ATOM_COUNT_BASE;
+          atoms = [];
+          for (let i = 0; i < count; i++) {
+            const isCore = Math.random() < 0.18;
+            atoms.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              vx: (Math.random() - 0.5) * 0.28,
+              vy: (Math.random() - 0.5) * 0.28,
+              r: isCore ? (2.4 + Math.random() * 1.6) : (1.2 + Math.random() * 1.2),
+              color: ATOM_COLORS[Math.floor(Math.random() * ATOM_COLORS.length)],
+              pulse: Math.random() * Math.PI * 2
+            });
+          }
+        }
+
+        function step() {
+          if (!running) return;
+          ctx.clearRect(0, 0, W, H);
+
+          for (let i = 0; i < atoms.length; i++) {
+            const a = atoms[i];
+            a.x += a.vx;
+            a.y += a.vy;
+            a.pulse += 0.02;
+
+            if (a.x < -20) a.x = W + 20;
+            if (a.x > W + 20) a.x = -20;
+            if (a.y < -20) a.y = H + 20;
+            if (a.y > H + 20) a.y = -20;
+          }
+
+          for (let i = 0; i < atoms.length; i++) {
+            for (let j = i + 1; j < atoms.length; j++) {
+              const a = atoms[i], b = atoms[j];
+              const dx = a.x - b.x, dy = a.y - b.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < LINK_DIST) {
+                const alpha = (1 - dist / LINK_DIST) * 0.35;
+                ctx.strokeStyle = 'rgba(61, 220, 132,' + alpha.toFixed(3) + ')';
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          for (let i = 0; i < atoms.length; i++) {
+            const a = atoms[i];
+            const glow = 0.55 + Math.sin(a.pulse) * 0.35;
+            ctx.beginPath();
+            ctx.fillStyle = a.color;
+            ctx.globalAlpha = glow;
+            ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          }
+
+          animId = requestAnimationFrame(step);
+        }
+
+        function start() {
+          if (animId) return;
+          running = true;
+          animId = requestAnimationFrame(step);
+        }
+
+        function stop() {
+          running = false;
+          if (animId) {
+            cancelAnimationFrame(animId);
+            animId = null;
+          }
+        }
+
+        resize();
+        seedAtoms();
+        start();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            resize();
+            seedAtoms();
+          }, 150);
+        });
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) stop();
+          else start();
+        });
+
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) start();
+              else stop();
+            });
+          }, { threshold: 0.05 });
+          io.observe(heroSection);
+        }
+      })();
 
       // ===== NAV =====
       const nav = document.getElementById('nav');
