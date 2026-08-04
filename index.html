@@ -2215,7 +2215,56 @@
         /* Remove the rising biotech emoji/icon animation layer */
         .bio-icon-field, .bio-icon-field .bicon { display: none !important; }
 
-    </style>
+    
+
+    /* Hero name — soft liquid / bubble reveal */
+    #heroTitle span.name-bubble-reveal {
+      display: block;
+      transform-origin: 50% 60%;
+      animation: nameBubbleReveal 1.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+      will-change: opacity, filter, transform, letter-spacing, text-shadow;
+    }
+
+    #heroTitle span.name-bubble-reveal.light {
+      animation-delay: 0.18s;
+    }
+
+    @keyframes nameBubbleReveal {
+      0% {
+        opacity: 0;
+        filter: blur(22px);
+        transform: translateY(18px) scale(0.9);
+        letter-spacing: 0.16em;
+        text-shadow: 0 0 34px rgba(134, 239, 192, 0.82), 0 0 68px rgba(34, 211, 238, 0.35);
+      }
+      42% {
+        opacity: 0.82;
+        filter: blur(6px);
+        transform: translateY(-3px) scale(1.035);
+        letter-spacing: 0.035em;
+        text-shadow: 0 0 24px rgba(134, 239, 192, 0.56), 0 0 48px rgba(34, 211, 238, 0.22);
+      }
+      72% {
+        opacity: 1;
+        filter: blur(1px);
+        transform: translateY(1px) scale(0.992);
+        letter-spacing: -0.035em;
+        text-shadow: 0 0 13px rgba(134, 239, 192, 0.24);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+        letter-spacing: -0.05em;
+        text-shadow: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #heroTitle span.name-bubble-reveal { animation: none; }
+    }
+
+  </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -2952,66 +3001,15 @@
         });
       });
 
-      // ===== HERO — DECODE EFFECT =====
-      const _C = {
-        'E': 'E3e', 'h': 'hnb', 's': 'szS5', 'a': 'aeo', 'n': 'nmN',
-        'N': 'NnM', 'g': 'gqG', 'd': 'dbp', 'b': 'bB6', 'i': 'ilj1'
-      };
-
+      // ===== HERO — SOFT BUBBLE REVEAL =====
       const _spans = document.querySelectorAll('#heroTitle span');
-      const _final = ['Ehsan', 'Naghdbishi'];
-      const _anim = [];
 
-      _spans.forEach((e, i) => {
-        const t = _final[i];
-        const a = [];
-        let s = '';
-
-        for (let j = 0; j < t.length; j++) {
-          if (t[j] === ' ') {
-            a.push(0);
-            s += ' ';
-          } else {
-            const d = Math.random() < 0.4;
-            a.push(d ? 1 : 0);
-            const p = _C[t[j]] || t[j];
-            s += d ? p[Math.random() * p.length | 0] : t[j];
-          }
-        }
-
-        _anim.push(a);
-        e.textContent = s;
-      });
-
-      function _decode(el, txt, anim, dur = 2.2) {
-        const t0 = performance.now();
-        const ord = [];
-
-        for (let i = 0; i < txt.length; i++) {
-          ord.push(
-            anim[i]
-              ? (i / txt.length) * 0.4 + Math.random() * 0.5
-              : -1
-          );
-        }
-
-        (function f(now) {
-          const p = Math.min((now - t0) / (dur * 1e3), 1);
-          const e = 1 - (1 - p) * (1 - p);
-          let s = '';
-
-          for (let i = 0; i < txt.length; i++) {
-            const ch = txt[i];
-            s += ch === ' '
-              ? ' '
-              : (!anim[i] || e > ord[i])
-                ? ch
-                : (_C[ch] || ch)[Math.random() * (_C[ch] || ch).length | 0];
-          }
-
-          el.textContent = s;
-          p < 1 ? requestAnimationFrame(f) : el.textContent = txt;
-        })(performance.now());
+      function revealHeroName() {
+        _spans.forEach((el) => {
+          el.classList.remove('name-bubble-reveal');
+          void el.offsetWidth;
+          el.classList.add('name-bubble-reveal');
+        });
       }
 
       const ht = gsap.timeline({ delay: 0.4 });
@@ -3019,7 +3017,7 @@
       ht
         .fromTo('#heroLabel', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
         .set('#heroTitle', { opacity: 1, y: 0 }, '-=0.3')
-        .call(() => _spans.forEach((e, i) => _decode(e, _final[i], _anim[i])), [], '-=0.1')
+        .call(revealHeroName, [], '-=0.1')
         .fromTo('#heroP', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .fromTo('#heroBtn', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
         .fromTo('#scrollHint', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.2');
