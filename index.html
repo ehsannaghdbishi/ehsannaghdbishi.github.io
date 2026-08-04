@@ -2185,14 +2185,43 @@
       height: 100%;
     }
 
-</style>
+
+
+        /* Header refinement: monochrome black / graphite glow */
+        .nav {
+            background: rgba(10, 10, 10, 0.72);
+            border-color: rgba(255, 255, 255, 0.11);
+            border-top-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(255, 255, 255, 0.035), 0 0 22px rgba(0, 0, 0, 0.42), 0 0 46px rgba(255, 255, 255, 0.025);
+            animation: navGlowBreatheMono 5.5s ease-in-out infinite;
+        }
+        .nav::before {
+            background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.34) 45%, rgba(104, 104, 104, 0.48) 55%, transparent 80%);
+            opacity: 0.13;
+        }
+        @keyframes navGlowBreatheMono {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(255, 255, 255, 0.035), 0 0 22px rgba(0, 0, 0, 0.36), 0 0 46px rgba(255, 255, 255, 0.018); }
+            50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.70), 0 0 0 1px rgba(255, 255, 255, 0.07), 0 0 34px rgba(0, 0, 0, 0.55), 0 0 64px rgba(255, 255, 255, 0.045); }
+        }
+        .nav.scrolled {
+            background: rgba(8, 8, 8, 0.86);
+            border-color: rgba(255, 255, 255, 0.16);
+            border-top-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.74), 0 0 0 1px rgba(255, 255, 255, 0.055), 0 0 30px rgba(0, 0, 0, 0.55), 0 0 60px rgba(255, 255, 255, 0.035);
+        }
+        .nav-logo:hover, .nav-links a.active { color: #fff; text-shadow: none; }
+        .nav-links a::after { background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.88), rgba(110,110,110,0.42)); }
+
+        /* Remove the rising biotech emoji/icon animation layer */
+        .bio-icon-field, .bio-icon-field .bicon { display: none !important; }
+
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
   <!-- DNA HELIX DECORATION (desktop only) -->
   <div class="dna-strand" id="dnaStrand" aria-hidden="true"></div>
   <canvas class="molecule-canvas" id="moleculeCanvas" aria-hidden="true"></canvas>
-  <div class="bio-icon-field" id="bioIconField" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
